@@ -1,0 +1,23 @@
+conky.cofig = {
+    double_buffer = true,
+    background = true ,
+    own_window = true,
+    own_window_class = 'Conky',
+    own_window_hints = 'undecorated', 'below', 'sticky',
+    own_window_argb_visual = true,
+    own_window_argb_value = 0,
+    own_window_type = 'desktop',
+    alignment = top_right
+}
+
+conky.text = [[
+    Kernel: ${alignr}${execi 3600 uname -r}
+    CPU0 ${cpu cpu0}% ${cpubar cpu0}
+    CPU1 ${cpu cpu1}% ${cpubar cpu1}
+    CPU2 ${cpu cpu0}% ${cpubar cpu2}
+    CPU3 ${cpu cpu0}% ${cpubar cpu3}
+    CPU4 ${cpu cpu0}% ${cpubar cpu4}
+    CPU5 ${cpu cpu0}% ${cpubar cpu5}
+    CPU6 ${cpu cpu0}% ${cpubar cpu6}
+    CPU7 ${cpu cpu0}% ${cpubar cpu7}
+]];
