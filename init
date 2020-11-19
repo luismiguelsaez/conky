@@ -36,8 +36,7 @@ conky.text = [[
 
     Kernel: ${alignc}${execi 3600 uname -r}
 
-    BAT: ${alignc}${battery_percent}% ( ${execi 20 cat /sys/class/power_supply/BAT0/status} )
-    ${if_match ${battery_percent} <= 5 }${color red}${battery_bar}${color}${else}${color #45ad4b}${battery_bar}${color}${endif}
+    BAT:${lua_parse conky_format %5s ${battery_percent}%}${lua_parse conky_format %12s ${execi 20 cat /sys/class/power_supply/BAT0/status} )} ${if_match ${battery_percent} <= 5 }${color #e82727}${battery_bar 10}${color}${else}${color #45ad4b}${battery_bar 10}${color}${endif}
 
     ${alignc}${font LiberationMono:bold:size=11}HARDWARE${font}
     ${hr 2}
