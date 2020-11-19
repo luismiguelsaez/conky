@@ -48,14 +48,18 @@ conky.text = [[
 
     ${font LiberationMono:bold:size=10}CPU Model:${font} ${alignc}${execi 1000 cat /proc/cpuinfo | grep "model name" | cut -d : -f2 | head -1}
 
-    ${font LiberationMono:bold:size=10}CPU1${font}${lua_parse conky_format %5s ${cpu cpu0}%}    ${cpubar cpu0}
-    ${font LiberationMono:bold:size=10}CPU2${font}${lua_parse conky_format %5s ${cpu cpu1}%}    ${cpubar cpu1}
-    ${font LiberationMono:bold:size=10}CPU3${font}${lua_parse conky_format %5s ${cpu cpu2}%}    ${cpubar cpu2}
-    ${font LiberationMono:bold:size=10}CPU4${font}${lua_parse conky_format %5s ${cpu cpu3}%}    ${cpubar cpu3}
-    ${font LiberationMono:bold:size=10}CPU5${font}${lua_parse conky_format %5s ${cpu cpu4}%}    ${cpubar cpu4}
-    ${font LiberationMono:bold:size=10}CPU6${font}${lua_parse conky_format %5s ${cpu cpu5}%}    ${cpubar cpu5}
-    ${font LiberationMono:bold:size=10}CPU7${font}${lua_parse conky_format %5s ${cpu cpu6}%}    ${cpubar cpu6}
-    ${font LiberationMono:bold:size=10}CPU8${font}${lua_parse conky_format %5s ${cpu cpu7}%}    ${cpubar cpu7}
+    ${cpugraph cpu0 40, #35b557 #bd3535 1 -t}
+
+    ${font LiberationMono:bold:size=10}CPU${font}${lua_parse conky_format %6s ${cpu cpu0}%}    ${cpubar cpu0}
+
+    ${font LiberationMono:bold:size=10}CPU1${font}${lua_parse conky_format %5s ${cpu cpu1}%}    ${cpubar cpu1}
+    ${font LiberationMono:bold:size=10}CPU2${font}${lua_parse conky_format %5s ${cpu cpu2}%}    ${cpubar cpu2}
+    ${font LiberationMono:bold:size=10}CPU3${font}${lua_parse conky_format %5s ${cpu cpu3}%}    ${cpubar cpu3}
+    ${font LiberationMono:bold:size=10}CPU4${font}${lua_parse conky_format %5s ${cpu cpu4}%}    ${cpubar cpu4}
+    ${font LiberationMono:bold:size=10}CPU5${font}${lua_parse conky_format %5s ${cpu cpu5}%}    ${cpubar cpu5}
+    ${font LiberationMono:bold:size=10}CPU6${font}${lua_parse conky_format %5s ${cpu cpu6}%}    ${cpubar cpu6}
+    ${font LiberationMono:bold:size=10}CPU7${font}${lua_parse conky_format %5s ${cpu cpu7}%}    ${cpubar cpu7}
+    ${font LiberationMono:bold:size=10}CPU8${font}${lua_parse conky_format %5s ${cpu cpu8}%}    ${cpubar cpu8}
 
     ${hr 1}
 
