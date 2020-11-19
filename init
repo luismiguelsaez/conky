@@ -1,0 +1,67 @@
+conky.config = {
+    lua_load = './lua/functions.lua',
+    lua_draw_hook_pre = conky_format,
+
+    double_buffer = true,
+    update_interval = 2.0,
+    background = false ,
+    own_window = true,
+    own_window_class = 'Conky',
+    own_window_transparent = true,
+    own_window_hints = 'undecorated', 'below', 'sticky',
+    own_window_argb_visual = true,
+    own_window_argb_value = 0,
+    own_window_type = 'desktop',
+    border_inner_margin = 0,
+    border_outer_margin = 0,
+    maximum_width = 1024,
+    alignment = 'top_right',
+    gap_x = 20,
+    gap_y = 50,
+    default_color = '#325aa8',
+    font = 'LiberationMono:light:size=10',
+    draw_shades = false,
+    draw_outline = false,
+    draw_borders = false,
+    draw_graph_borders = false,
+    use_xft = true,
+    xftalpha = 0.8
+}
+
+conky.text = [[
+
+    Kernel: ${alignc}${execi 3600 uname -r}
+
+    BAT: ${alignc}${battery_percent}% ( ${execi 20 cat /sys/class/power_supply/BAT0/status} )
+    ${if_match ${battery_percent} <= 5 }${color red}${battery_bar}${color}${else}${color #45ad4b}${battery_bar}${color}${endif}
+
+    ${alignc}${font LiberationMono:bold:size=11}HARDWARE${font}
+    ${hr 2}
+
+    ${font LiberationMono:bold:size=10}RAM:${font} ${alignc}${mem} / ${memmax} ${alignr}${memperc}%
+    ${membar}
+
+    ${hr 1}
+
+    ${font LiberationMono:bold:size=10}CPU Model:${font} ${alignc}${execi 1000 cat /proc/cpuinfo | grep "model name" | cut -d : -f2 | head -1}
+
+    ${font LiberationMono:bold:size=10}CPU1${font}${lua_parse conky_format %5s ${cpu cpu0}%}    ${cpubar cpu0}
+    ${font LiberationMono:bold:size=10}CPU2${font}${lua_parse conky_format %5s ${cpu cpu1}%}    ${cpubar cpu1}
+    ${font LiberationMono:bold:size=10}CPU3${font}${lua_parse conky_format %5s ${cpu cpu2}%}    ${cpubar cpu2}
+    ${font LiberationMono:bold:size=10}CPU4${font}${lua_parse conky_format %5s ${cpu cpu3}%}    ${cpubar cpu3}
+    ${font LiberationMono:bold:size=10}CPU5${font}${lua_parse conky_format %5s ${cpu cpu4}%}    ${cpubar cpu4}
+    ${font LiberationMono:bold:size=10}CPU6${font}${lua_parse conky_format %5s ${cpu cpu5}%}    ${cpubar cpu5}
+    ${font LiberationMono:bold:size=10}CPU7${font}${lua_parse conky_format %5s ${cpu cpu6}%}    ${cpubar cpu6}
+    ${font LiberationMono:bold:size=10}CPU8${font}${lua_parse conky_format %5s ${cpu cpu7}%}    ${cpubar cpu7}
+
+    ${hr 1}
+
+    ${font LiberationMono:bold:size=10}Latency:${font} ${execi 10 ping -4 -c1 -W1 8.8.8.8 -q | grep rtt | awk '{split($4,a,"/");print a[1];}'}ms
+    ${if_existing /proc/net/route enp0s31f6}${font LiberationMono:bold:size=10}LAN${font}  [ ${addrs enp0s31f6} ]: ${alignc}UP: ${upspeed enp0s31f6}/${alignc}DOWN: ${downspeed enp0s31f6}${endif}${if_existing /proc/net/route wlp58s0}${font LiberationMono:bold:size=10}WLAN${font} [ ${addrs wlp58s0} ]: ${alignc}UP:${upspeed wlp58s0} / ${alignc}DOWN:${downspeed wlp58s0}${endif}
+
+    ${hr 1}
+
+    ${font LiberationMono:bold:size=10}${lua_parse conky_format %-5s /boot}${font}${lua_parse conky_format %9s ${fs_used /boot}} /${lua_parse conky_format %8s ${fs_size /boot}}   ${fs_bar /boot}
+    ${font LiberationMono:bold:size=10}${lua_parse conky_format %-5s /}${font}${lua_parse conky_format %9s ${fs_used /}} /${lua_parse conky_format %8s ${fs_size /}}   ${fs_bar /}
+    ${font LiberationMono:bold:size=10}${lua_parse conky_format %-5s /home}${font}${lua_parse conky_format %9s ${fs_used /home}} /${lua_parse conky_format %8s ${fs_size /home}}   ${fs_bar /home}
+]];
