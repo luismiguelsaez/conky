@@ -4,6 +4,7 @@ conky.config = {
 
     double_buffer = true,
     update_interval = 2.0,
+
     background = false ,
     own_window = true,
     own_window_class = 'Conky',
@@ -12,18 +13,21 @@ conky.config = {
     own_window_argb_visual = true,
     own_window_argb_value = 0,
     own_window_type = 'desktop',
-    border_inner_margin = 0,
-    border_outer_margin = 0,
-    maximum_width = 1024,
-    alignment = 'top_right',
-    gap_x = 20,
-    gap_y = 50,
+
     default_color = '#325aa8',
     font = 'LiberationMono:light:size=10',
     draw_shades = false,
     draw_outline = false,
     draw_borders = false,
     draw_graph_borders = false,
+    border_inner_margin = 0,
+    border_outer_margin = 0,
+
+    maximum_width = 1024,
+    alignment = 'top_right',
+    gap_x = 20,
+    gap_y = 50,
+
     use_xft = true,
     xftalpha = 0.8
 }
