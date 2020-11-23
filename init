@@ -7,7 +7,7 @@ conky.config = {
 
     background = false ,
     own_window = true,
-    own_window_type = 'normal',
+    own_window_type = 'desktop',
     own_window_class = 'conky',
     own_window_transparent = true,
     own_window_hints = 'undecorated,sticky,skip_taskbar,skip_pager,below'
