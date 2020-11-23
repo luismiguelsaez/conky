@@ -61,6 +61,14 @@ conky.text = [[
     ${font LiberationMono:bold:size=10}CPU7${font}${lua_parse conky_format %5s ${cpu cpu7}%}    ${cpubar cpu7}
     ${font LiberationMono:bold:size=10}CPU8${font}${lua_parse conky_format %5s ${cpu cpu8}%}    ${cpubar cpu8}
 
+    ${hr 1} 
+ 
+    ${lua_parse conky_format %12s ${top name 1}}${lua_parse conky_format %10s ${top cpu 1}%}${lua_parse conky_format %10s ${top mem_res 1}}${lua_parse conky_format %10s ${top mem 1}%}
+    ${lua_parse conky_format %12s ${top name 2}}${lua_parse conky_format %10s ${top cpu 2}%}${lua_parse conky_format %10s ${top mem_res 2}}${lua_parse conky_format %10s ${top mem 2}%}
+    ${lua_parse conky_format %12s ${top name 3}}${lua_parse conky_format %10s ${top cpu 3}%}${lua_parse conky_format %10s ${top mem_res 3}}${lua_parse conky_format %10s ${top mem 3}%}
+    ${lua_parse conky_format %12s ${top name 4}}${lua_parse conky_format %10s ${top cpu 4}%}${lua_parse conky_format %10s ${top mem_res 4}}${lua_parse conky_format %10s ${top mem 4}%}
+    ${lua_parse conky_format %12s ${top name 5}}${lua_parse conky_format %10s ${top cpu 5}%}${lua_parse conky_format %10s ${top mem_res 5}}${lua_parse conky_format %10s ${top mem 5}%}
+
     ${hr 1}
 
     ${font LiberationMono:bold:size=10}Latency: ${font}${if_match ${exec ping -4 -c1 -W1 8.8.8.8 -q | grep rtt | awk '{split($4,a,"/");print a[1];}'} >= 25 }${color #e82727}${execi 10 ping -4 -c1 -W1 8.8.8.8 -q | grep rtt | awk '{split($4,a,"/");print a[1];}'}ms${color}${else}${execi 10 ping -4 -c1 -W1 8.8.8.8 -q | grep rtt | awk '{split($4,a,"/");print a[1];}'}ms${endif}
