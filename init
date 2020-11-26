@@ -3,7 +3,9 @@ conky.config = {
     lua_draw_hook_pre = conky_format,
 
     double_buffer = true,
-    update_interval = 2.0,
+    update_interval = 1.5,
+    cpu_avg_samples = 2,
+	net_avg_samples = 2,
 
     background = false ,
     own_window = true,
@@ -43,23 +45,20 @@ conky.text = [[
 
     ${font LiberationMono:bold:size=10}RAM:${font} ${alignc}${mem} / ${memmax} ${alignr}${memperc}%
     ${membar}
+    ${memgraph 30, #AAF5D0 #00B35B}
 
     ${hr 1}
 
     ${font LiberationMono:bold:size=10}CPU Model:${font} ${alignc}${execi 1000 cat /proc/cpuinfo | grep "model name" | cut -d : -f2 | head -1}
 
-    ${cpugraph cpu0 40, #35b557 #bd3535 1 -t}
+    ${cpugraph cpu0 40, #35B557 #BD3535 1 -t}
 
-    ${font LiberationMono:bold:size=10}CPU${font}${lua_parse conky_format %6s ${cpu cpu0}%}    ${cpubar cpu0}
+    ${font LiberationMono:bold:size=10}CPU${font}${lua_parse conky_format %5s ${cpu cpu0}%} ${cpubar cpu0}
 
-    ${font LiberationMono:bold:size=10}CPU1${font}${lua_parse conky_format %5s ${cpu cpu1}%}    ${cpubar cpu1}
-    ${font LiberationMono:bold:size=10}CPU2${font}${lua_parse conky_format %5s ${cpu cpu2}%}    ${cpubar cpu2}
-    ${font LiberationMono:bold:size=10}CPU3${font}${lua_parse conky_format %5s ${cpu cpu3}%}    ${cpubar cpu3}
-    ${font LiberationMono:bold:size=10}CPU4${font}${lua_parse conky_format %5s ${cpu cpu4}%}    ${cpubar cpu4}
-    ${font LiberationMono:bold:size=10}CPU5${font}${lua_parse conky_format %5s ${cpu cpu5}%}    ${cpubar cpu5}
-    ${font LiberationMono:bold:size=10}CPU6${font}${lua_parse conky_format %5s ${cpu cpu6}%}    ${cpubar cpu6}
-    ${font LiberationMono:bold:size=10}CPU7${font}${lua_parse conky_format %5s ${cpu cpu7}%}    ${cpubar cpu7}
-    ${font LiberationMono:bold:size=10}CPU8${font}${lua_parse conky_format %5s ${cpu cpu8}%}    ${cpubar cpu8}
+    [1]${lua_parse conky_format %5s ${cpu cpu1}%} ${cpubar cpu1 5,120}${alignr}[2]${lua_parse conky_format %5s ${cpu cpu2}%} ${cpubar cpu2 5,120}
+    [3]${lua_parse conky_format %5s ${cpu cpu3}%} ${cpubar cpu3 5,120}${alignr}[4]${lua_parse conky_format %5s ${cpu cpu4}%} ${cpubar cpu4 5,120}
+    [5]${lua_parse conky_format %5s ${cpu cpu5}%} ${cpubar cpu5 5,120}${alignr}[6]${lua_parse conky_format %5s ${cpu cpu6}%} ${cpubar cpu6 5,120}
+    [7]${lua_parse conky_format %5s ${cpu cpu7}%} ${cpubar cpu7 5,120}${alignr}[8]${lua_parse conky_format %5s ${cpu cpu8}%} ${cpubar cpu8 5,120}
 
     ${hr 1} 
  
