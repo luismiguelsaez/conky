@@ -70,7 +70,7 @@ conky.text = [[
 
     ${hr 1}
 
-    ${font LiberationMono:bold:size=10}Latency: ${font}${if_match ${exec ping -4 -c1 -W1 8.8.8.8 -q | grep rtt | awk '{split($4,a,"/");print a[1];}'} >= 25 }${color #e82727}${execi 10 ping -4 -c1 -W1 8.8.8.8 -q | grep rtt | awk '{split($4,a,"/");print a[1];}'}ms${color}${else}${execi 10 ping -4 -c1 -W1 8.8.8.8 -q | grep rtt | awk '{split($4,a,"/");print a[1];}'}ms${endif}
+    ${font LiberationMono:bold:size=10}Latency: ${font}${if_match ${exec ping -4 -c1 -W1 8.8.8.8 -q | grep rtt | awk '{split($4,a,"/");print a[1];}'} >= 25 }${color #e82727}${exec ping -4 -c1 -W1 8.8.8.8 -q | grep rtt | awk '{split($4,a,"/");print a[1];}'}ms${color}${else}${execi ping -4 -c1 -W1 8.8.8.8 -q | grep rtt | awk '{split($4,a,"/");print a[1];}'}ms${endif}
     ${if_existing /proc/net/route enp0s31f6}${font LiberationMono:bold:size=10}LAN${font}  [ ${addrs enp0s31f6} ]: ${alignc}UP: ${upspeed enp0s31f6}/${alignc}DOWN: ${downspeed enp0s31f6}${endif}${if_existing /proc/net/route wlp58s0}${font LiberationMono:bold:size=10}WLAN${font} [ ${addrs wlp58s0} ]: ${alignc}UP:${upspeed wlp58s0} / ${alignc}DOWN:${downspeed wlp58s0}${endif}
 
     ${hr 1}
