@@ -38,8 +38,6 @@ conky.text = [[
 
     Kernel: ${alignc}${execi 3600 uname -r}
 
-    BAT:${lua_parse conky_format %5s ${battery_percent}%}${lua_parse conky_format %12s ${execi 20 cat /sys/class/power_supply/BAT0/status} )} ${if_match ${battery_percent} <= 5 }${color #e82727}${battery_bar 10}${color}${else}${color #45ad4b}${battery_bar 10}${color}${endif}
-
     ${alignc}${font LiberationMono:bold:size=11}HARDWARE${font}
     ${hr 2}
 
@@ -59,6 +57,8 @@ conky.text = [[
     [3]${lua_parse conky_format %5s ${cpu cpu3}%} ${cpubar cpu3 5,120}${alignr}[4]${lua_parse conky_format %5s ${cpu cpu4}%} ${cpubar cpu4 5,120}
     [5]${lua_parse conky_format %5s ${cpu cpu5}%} ${cpubar cpu5 5,120}${alignr}[6]${lua_parse conky_format %5s ${cpu cpu6}%} ${cpubar cpu6 5,120}
     [7]${lua_parse conky_format %5s ${cpu cpu7}%} ${cpubar cpu7 5,120}${alignr}[8]${lua_parse conky_format %5s ${cpu cpu8}%} ${cpubar cpu8 5,120}
+    [9]${lua_parse conky_format %5s ${cpu cpu9}%} ${cpubar cpu9 5,120}${alignr}[10]${lua_parse conky_format %5s ${cpu cpu10}%} ${cpubar cpu10 5,120}
+    [11]${lua_parse conky_format %5s ${cpu cpu11}%} ${cpubar cpu11 5,120}${alignr}[12]${lua_parse conky_format %5s ${cpu cpu12}%} ${cpubar cpu12 5,120}
 
     ${hr 1} 
  
